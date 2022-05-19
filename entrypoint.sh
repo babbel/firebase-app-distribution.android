@@ -22,6 +22,8 @@ if [ -n "${INPUT_TOKEN}" ] ; then
     export FIREBASE_TOKEN="${INPUT_TOKEN}"
 fi
 
+git config --global --add safe.directory /github/workspace
+
 firebase \
         appdistribution:distribute \
         "$INPUT_FILE" \
