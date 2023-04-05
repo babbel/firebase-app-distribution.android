@@ -20,6 +20,11 @@ if [ -n "${INPUT_SERVICECREDENTIALSFILE}" ] ; then
     export GOOGLE_APPLICATION_CREDENTIALS="${INPUT_SERVICECREDENTIALSFILE}"
 fi
 
+if [ -n "${INPUT_SERVICECREDENTIALSFILECONTENT}" ] ; then
+    cat <<< "${INPUT_SERVICECREDENTIALSFILECONTENT}" > service_credentials_content.json
+    export GOOGLE_APPLICATION_CREDENTIALS="service_credentials_content.json"
+fi
+
 firebase \
         appdistribution:distribute \
         "$INPUT_FILE" \

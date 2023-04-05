@@ -8,6 +8,9 @@ inputs:
   serviceCredentialsFile:
     description: 'Service credential file'
     required: false
+  serviceCredentialsFileContent:
+    description: 'Content of service credentials file'
+    required: false
   file:
     description: 'Artifact to upload (.apk or .ipa)'
     required: true
