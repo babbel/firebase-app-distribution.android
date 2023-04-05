@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 git config --global --add safe.directory /github/workspace
 
@@ -21,7 +21,7 @@ if [ -n "${INPUT_SERVICECREDENTIALSFILE}" ] ; then
 fi
 
 if [ -n "${INPUT_SERVICECREDENTIALSFILECONTENT}" ] ; then
-    printf "${INPUT_SERVICECREDENTIALSFILECONTENT}" >> service_credentials_content.json
+    cat <<< "${INPUT_SERVICECREDENTIALSFILECONTENT}" > service_credentials_content.json
     export GOOGLE_APPLICATION_CREDENTIALS="service_credentials_content.json"
 fi
 
