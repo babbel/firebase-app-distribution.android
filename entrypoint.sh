@@ -20,10 +20,6 @@ if [ -n "${INPUT_SERVICECREDENTIALSFILE}" ] ; then
     export GOOGLE_APPLICATION_CREDENTIALS="${INPUT_SERVICECREDENTIALSFILE}"
 fi
 
-if [ -n "${INPUT_TOKEN}" ] ; then
-    export FIREBASE_TOKEN="${INPUT_TOKEN}"
-fi
-
 firebase \
         appdistribution:distribute \
         "$INPUT_FILE" \
