@@ -21,7 +21,7 @@ if [ -n "${INPUT_SERVICECREDENTIALSFILE}" ] ; then
 fi
 
 if [ -n "${INPUT_SERVICECREDENTIALSFILECONTENT}" ] ; then
-    cat <<< "${INPUT_SERVICECREDENTIALSFILECONTENT}" > service_credentials_content.json
+    printf "${INPUT_SERVICECREDENTIALSFILECONTENT}" > service_credentials_content.json
     export GOOGLE_APPLICATION_CREDENTIALS="service_credentials_content.json"
 fi
 
