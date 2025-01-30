@@ -25,6 +25,10 @@ if [ -n "${INPUT_SERVICECREDENTIALSFILECONTENT}" ] ; then
     export GOOGLE_APPLICATION_CREDENTIALS="service_credentials_content.json"
 fi
 
+# Just for clarity...
+# INPUT_<name> are mapped from the actions input params
+# Read more here: https://docs.github.com/en/actions/sharing-automations/creating-actions/metadata-syntax-for-github-actions#example-specifying-inputs
+
 firebase \
         appdistribution:distribute \
         "$INPUT_FILE" \
