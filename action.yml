@@ -5,11 +5,8 @@ inputs:
   appId:
     description: 'App id can be found on the General Settings page'
     required: true
-  token:
-    description: 'Upload token - see Firebase CLI Reference'
-    required: false
   serviceCredentialsFile:
-    description: 'Service credentials file'
+    description: 'Service credential file'
     required: false
   serviceCredentialsFileContent:
     description: 'Content of service credentials file'
@@ -33,13 +30,6 @@ inputs:
     description: 'Flag that can included to print verbose log output.'
     required: false
     default: false
-outputs:
-  FIREBASE_CONSOLE_URI:
-    description: 'Link to uploaded release in the Firebase console'
-  TESTING_URI:
-    description: 'Link to share release with testers who have access'
-  BINARY_DOWNLOAD_URI:
-    description: 'Link to download the release binary (expires in 1 hour)'
 branding:
   color: 'orange'
   icon: 'send'

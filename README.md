@@ -9,23 +9,12 @@ This action uploads artifacts (.apk,.aab or .ipa) to Firebase App Distribution.
 
 ### `appId`
 
-**Required** App id can be found in the Firebase console in your Projects Settings, under Your apps. It is in the following format 1:1234567890123942955466829:android:1234567890abc123abc123
-
-### `token`
-
-⚠️ Deprecated! Don't use it. Firebase team deprecated this option and it will soon be removed.
-
-Use `serviceCredentialsFileContent` instead. [Learn here how to generate one](https://github.com/wzieba/Firebase-Distribution-Github-Action/wiki/FIREBASE_TOKEN-migration).
-
-~**Required** Upload token - see Firebase CLI Reference (tldr; run `firebase login:ci` command to get your token).~
-
-### `serviceCredentialsFileContent`
-**Required** Content of Service Credentials private key JSON file. [Learn here how to generate one](https://github.com/wzieba/Firebase-Distribution-Github-Action/wiki/FIREBASE_TOKEN-migration).
+**Required** App id can be found on the General Settings page
 
 ### `serviceCredentialsFile`
 
-**Required** Service Credentials File - The path or HTTP URL to your Service Account private key JSON file.
-Required only if you don't use `serviceCredentialsFileContent`.
+**Required** Service Credentials File - The path or HTTP URL to your [service account](https://firebase.google.com/docs/app-distribution/android/distribute-gradle#authenticate_using_a_service_account) private key JSON file.
+Required only if you use service account authentication.
 
 ### `file`
 
@@ -34,10 +23,6 @@ Required only if you don't use `serviceCredentialsFileContent`.
 ### `groups`
 
 Distribution groups
-
-### `testers`
-
-Distribution testers. The email address of the testers you want to invite.
 
 ### `releaseNotes`
 
@@ -53,20 +38,6 @@ Specify the release note path to a plain text file.
 ### `debug`
 
 Flag that can be included to print verbose log output. Default value is `false`
-
-## Outputs
-
-### `FIREBASE_CONSOLE_URI`
-
-Link to uploaded release in the Firebase console.
-
-### `TESTING_URI`
-
-Link to share release with testers who have access.
-
-### `BINARY_DOWNLOAD_URI`
-
-Link to download the release binary (link expires in 1 hour).
 
 ## Sample usage
 
@@ -92,8 +63,7 @@ jobs:
       uses: wzieba/Firebase-Distribution-Github-Action@v1
       with:
         appId: ${{secrets.FIREBASE_APP_ID}}
-        serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+        token: ${{secrets.FIREBASE_TOKEN}}
         groups: testers
         file: app/build/outputs/apk/release/app-release-unsigned.apk
-
 ```
